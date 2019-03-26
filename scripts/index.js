@@ -10,9 +10,9 @@ var getDirName = require("path").dirname;
 var fs = require("fs");
 var newCordobaJsFile;
 fs.readFile("out/index.html", function(err, buf) {
-  var myString = buf.toString();
-  var myRegexp = /href=\"\/\_next.*?\"/g;
-  var match = myRegexp.exec(myString);
+  var nextHtml = buf.toString();
+  var jsRegex = /href=\"\/\_next.*?\"/g;
+  var match = jsRegex.exec(nextHtml);
 
   var nextJsDump = "";
   while (match != null) {
@@ -21,7 +21,7 @@ fs.readFile("out/index.html", function(err, buf) {
       .replace('"', "")
       .replace("_", "out/_");
     nextJsDump += fs.readFileSync(jsFilePath).toString();
-    match = myRegexp.exec(myString);
+    match = jsRegex.exec(nextHtml);
   }
 
   newCordobaJsFile = fs
@@ -35,6 +35,24 @@ fs.readFile("out/index.html", function(err, buf) {
     if (err) throw err;
     console.log("Saved new js!");
   });
+
+  nextHtml = nextHtml.replace(jsRegex, "");
+  const cordovaInjectHead = `
+    <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script><meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">        
+  `;
+  nextHtml = nextHtml.replace("<head>", "<head>" + cordovaInjectHead);
+
+  const cordovaInjectHtml = `
+<div class="app">
+  `;
+  nextHtml = nextHtml.replace("</body>", cordovaInjectHtml + "</body>");
+
+  writeFile("www/index.html", nextHtml, function(err) {
+    if (err) throw err;
+    console.log("Saved new html!");
+  });
+    console.log("ready to run");
 });
 
 function writeFile(path, contents, cb) {
