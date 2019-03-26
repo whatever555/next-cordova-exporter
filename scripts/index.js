@@ -7,6 +7,7 @@ var getDirName = require("path").dirname;
 //shell.exec("yarn build");
 //shell.exec("yarn export");
 
+console.log("this this is complete run 'cordova run browser'");
 var fs = require("fs");
 var newCordobaJsFile;
 fs.readFile("out/index.html", function(err, buf) {
@@ -52,7 +53,6 @@ fs.readFile("out/index.html", function(err, buf) {
     if (err) throw err;
     console.log("Saved new html!");
   });
-    console.log("ready to run");
 });
 
 function writeFile(path, contents, cb) {
