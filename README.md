@@ -1,4 +1,4 @@
-# NextJs Cordoba exporter
+# NextJs Cordova exporter
 Use this package if you want to run a nextjs project in cordova  
 
 
