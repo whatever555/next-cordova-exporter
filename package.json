@@ -1,0 +1,24 @@
+{
+  "name": "next-cordova-exporter",
+  "version": "1.0.0",
+  "description": "Export Nextjs projects for Cordova",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/whatever555/next-cordova-exporter.git"
+  },
+  "keywords": [
+    "nextjs",
+    "cordova",
+    "export"
+  ],
+  "author": "emurph",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whatever555/next-cordova-exporter/issues"
+  },
+  "homepage": "https://github.com/whatever555/next-cordova-exporter#readme"
+}
