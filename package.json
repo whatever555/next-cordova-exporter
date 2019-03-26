@@ -1,11 +1,10 @@
 {
   "name": "next-cordova-exporter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Export Nextjs projects for Cordova",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "next-cordova-export": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -17,7 +16,7 @@
     "export"
   ],
   "bin": {
-    "github-pages-commit": "scripts/index.js"
+    "next-cordova-export": "scripts/index.js"
   },
   "author": "emurph",
   "license": "ISC",
