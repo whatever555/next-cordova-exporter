@@ -26,7 +26,6 @@
   "homepage": "https://github.com/whatever555/next-cordova-exporter#readme",
   "dependencies": {
     "fs": "^0.0.1-security",
-    "mkdirp": "^0.5.1",
-    "shelljs": "^0.8.3"
+    "mkdirp": "^0.5.1"
   }
 }

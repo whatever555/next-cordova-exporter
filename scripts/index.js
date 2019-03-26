@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-var shell = require("shelljs");
+//var shell = require("shelljs");
 var mkdirp = require("mkdirp");
 
 var getDirName = require("path").dirname;
