@@ -7,6 +7,7 @@ next-cordova-exporter`)
 Build your nextjs project (`next build`)   
 Export your nextjs project (`next export`)  
 Run the command (in your terminal) `next-cordova-export` in the root folder of your project
+run `cordova run android/browser/ios`
 
 # TODO  
 Images and css may not yet work  

@@ -25,6 +25,17 @@ fs.readFile("out/index.html", function(err, buf) {
     match = jsRegex.exec(nextHtml);
   }
 
+  jsRegex2 = /src=\"\/\_next.*?js\"/g;
+  match = jsRegex2.exec(nextHtml);
+  while (match != null) {
+    const jsFilePath = match[0]
+      .replace('src="/', "")
+      .replace('"', "")
+      .replace("_", "out/_");
+    nextJsDump += fs.readFileSync(jsFilePath).toString();
+    match = jsRegex2.exec(nextHtml);
+  }
+
   newCordobaJsFile = fs
     .readFileSync(
       "./node_modules/next-cordova-exporter/templates/cordova/index.js"
@@ -38,6 +49,7 @@ fs.readFile("out/index.html", function(err, buf) {
   });
 
   nextHtml = nextHtml.replace(jsRegex, "");
+  nextHtml = nextHtml.replace(jsRegex2, "");
   const cordovaInjectHead = `
     <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script><meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">        
