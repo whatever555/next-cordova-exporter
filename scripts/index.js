@@ -1,16 +1,17 @@
 #! /usr/bin/env node
-//var shell = require("shelljs");
 var mkdirp = require("mkdirp");
-
 var getDirName = require("path").dirname;
+var fs = require('fs');
 
-//shell.exec("yarn build");
-//shell.exec("yarn export");
+var outDir = './out';
 
 console.log("When this is complete run 'cordova run browser'");
-var fs = require("fs");
 var newCordobaJsFile;
-fs.readFile("out/index.html", function(err, buf) {
+fs.readFile(`${outDir}/index.html`, function(err, buf) {
+  if (!buf) {
+    console.error('No index file was loaded from ./out/ folder. Have you run your next export correctly?');
+    return;
+  }
   var nextHtml = buf.toString();
   var jsRegex = /href=\"\/\_next.*?\"/g;
   var match = jsRegex.exec(nextHtml);
