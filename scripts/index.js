@@ -1,15 +1,18 @@
 #! /usr/bin/env node
 var mkdirp = require("mkdirp");
 var getDirName = require("path").dirname;
-var fs = require('fs');
+var fs = require("fs");
 
-var outDir = './out';
+var outDir = "./out";
 
 console.log("When this is complete run 'cordova run browser'");
 var newCordobaJsFile;
-fs.readFile(`${outDir}/index.html`, function(err, buf) {
+fs.readFile(`${outDir}/index.html`, function (err, buf) {
   if (!buf) {
-    console.error('No index file was loaded from ./out/ folder. Have you run your next export correctly?', 'Try running "npm run export" first.');
+    console.error(
+      "No index file was loaded from ./out/ folder. Have you run your next export correctly?",
+      'Try running "npm run export" first.'
+    );
     return;
   }
   var nextHtml = buf.toString();
@@ -37,6 +40,17 @@ fs.readFile(`${outDir}/index.html`, function(err, buf) {
     match = jsRegex2.exec(nextHtml);
   }
 
+  configFile = fs
+    .readFileSync(
+      "./node_modules/next-cordova-exporter/templates/config.xml"
+    )
+    .toString()
+
+  writeFile("config.xml", configFile, function (err) {
+    if (err) throw err;
+    console.log("Saved new xml config file (Please update with your values)!");
+  });
+
   newCordobaJsFile = fs
     .readFileSync(
       "./node_modules/next-cordova-exporter/templates/cordova/index.js"
@@ -44,7 +58,7 @@ fs.readFile(`${outDir}/index.html`, function(err, buf) {
     .toString()
     .replace("---NEXT_JS---", nextJsDump);
 
-  writeFile("www/js/index.js", newCordobaJsFile, function(err) {
+  writeFile("www/js/index.js", newCordobaJsFile, function (err) {
     if (err) throw err;
     console.log("Saved new js!");
   });
@@ -62,14 +76,14 @@ fs.readFile(`${outDir}/index.html`, function(err, buf) {
   `;
   nextHtml = nextHtml.replace("</body>", cordovaInjectHtml + "</body>");
 
-  writeFile("www/index.html", nextHtml, function(err) {
+  writeFile("www/index.html", nextHtml, function (err) {
     if (err) throw err;
     console.log("Saved new html!");
   });
 });
 
 function writeFile(path, contents, cb) {
-  mkdirp(getDirName(path), function(err) {
+  mkdirp(getDirName(path), function (err) {
     if (err) return cb(err);
 
     fs.writeFile(path, contents, cb);

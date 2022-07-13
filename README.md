@@ -27,7 +27,18 @@ Add the following scripts to your `package.json` file:
 Export your nextjs project (`npm run export`)  
 Run the command (in your terminal) `npm run export-cordova` in the root folder of your project
 
-run `npm run cordova-run`
+Add cordova platforms for project:  
+e.g:   
+`cordova platform add browser`  
+`cordova platform add android`  
+`cordova platform add ios`  
+  
+The to run in the browser:  
+run `cordova run browser`
+For IOS
+run `cordova run ios`
+For Android 
+run `cordova run android`
 
 
 # TODO  
