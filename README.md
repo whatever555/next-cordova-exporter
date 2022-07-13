@@ -37,6 +37,30 @@ run `cordova run ios`
 For Android 
 run `cordova run android`
 
+# Tidy up  
+Be sure to hide the following folders from linters, tyescript, and git etc
+
+Eslint:  
+Add the following to your `.eslintignore` file:  
+```
+"exclude": ["out", "www", "platforms"],
+```
+Git:  
+Add the following to your `.gitignore` file:  
+```
+**/platforms/*
+**/out/*
+**/www/*
+```
+
+Typescript:  
+Add the following to your `.tsconfig` file:  
+```
+**/platforms/*
+**/out/*
+**/www/*
+config.xml
+```
 
 # TODO  
 Images and css may not yet work  
