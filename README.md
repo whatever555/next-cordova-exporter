@@ -17,14 +17,11 @@ Install this package (`npm install next-cordova-exporter` or `yarn add next-cord
 Add the following scripts to your `package.json` file:  
 ```
   "scripts": {
-    "export": "next build && next export",
-    "export-cordova": "next-cordova-export",
-    "cordova-run": "cordova run android/browser/ios",
+    "export-cordova": "next build && next export && next-cordova-export",
     ...
   },
 ```
 
-Export your nextjs project (`npm run export`)  
 Run the command (in your terminal) `npm run export-cordova` in the root folder of your project
 
 Add cordova platforms for project:  
