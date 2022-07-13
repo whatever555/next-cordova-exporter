@@ -9,7 +9,7 @@ console.log("When this is complete run 'cordova run browser'");
 var newCordobaJsFile;
 fs.readFile(`${outDir}/index.html`, function(err, buf) {
   if (!buf) {
-    console.error('No index file was loaded from ./out/ folder. Have you run your next export correctly?');
+    console.error('No index file was loaded from ./out/ folder. Have you run your next export correctly?', 'Try running "npm run export" first.');
     return;
   }
   var nextHtml = buf.toString();

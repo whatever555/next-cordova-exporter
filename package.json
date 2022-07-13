@@ -1,6 +1,6 @@
 {
   "name": "next-cordova-exporter",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Export Nextjs projects for Cordova",
   "main": "index.js",
   "engines": {
@@ -30,8 +30,5 @@
   "dependencies": {
     "fs": "^0.0.1-security",
     "mkdirp": "^0.5.1"
-  },
-  "devDependencies": {
-    "cordova": "^11.0.0"
   }
 }
