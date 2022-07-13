@@ -3,14 +3,15 @@ Use this package if you want to run a nextjs project in cordova
 
 #Requirements  
 
-You will need both NextJs and Cordova to be installed in your project
-
 [NextJs](https://www.npmjs.com/package/next)  
 [Cordova](https://www.npmjs.com/package/cordova)
 
+You will need Cordova installed as a global package  
+e.g: `npm i -g cordova`
+
 
 # Steps required  
-Install cordova: (`npm install cordova` or `yarn add cordova`)  
+Install cordova: (`npm -g cordova` or `yarn global add cordova`)  
 Install this package (`npm install next-cordova-exporter` or `yarn add next-cordova-exporter`)  
 
 Add the following scripts to your `package.json` file:  
