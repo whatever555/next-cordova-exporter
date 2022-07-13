@@ -40,8 +40,8 @@ run `cordova run android`
 # Tidy up  
 Be sure to hide the following folders from linters, tyescript, and git etc
 
-Eslint:  
-Add the following to your `.eslintignore` file:  
+Typescript:  
+Add the following to your `.tsconfig` file:  
 ```
 "exclude": ["out", "www", "platforms"],
 ```
@@ -53,8 +53,8 @@ Add the following to your `.gitignore` file:
 **/www/*
 ```
 
-Typescript:  
-Add the following to your `.tsconfig` file:  
+Eslint:  
+Add the following to your `.eslintignore` file:  
 ```
 **/platforms/*
 **/out/*
